@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title', '会員登録 | 即BUY(ソクバイ)')
-@section('description', '即BUY(ソクバイ)の会員登録ページになります。当サイトにログイン情報をお持ちたいの方は、こちらから会員登録お願いいたします。')
-@section('page_name', '仮登録用フォーム')
+@section('title', '会員登録 | PayTech(ペイテック)')
+@section('description', 'PayTech(ペイテック)の会員登録ページになります。当サイトにログイン情報をお持ちたいの方は、こちらから会員登録お願いいたします。')
+@section('page_name', '会員登録')
 
 
 @push('head')
@@ -10,8 +10,13 @@
 @endpush
 
 @section('content')
-<section class="page-section section ">
+<main class="section__privacy page-section section ">
   <div class="wrap">
+    <div id="breadcrumb">
+      <div class="wrap">
+        <a href="{{ route(lp().'home') }}">即BUY(ソクバイ) TOP</a>　&gt;　<span class="breadcrumb_last" aria-current="page">仮登録用フォーム</span>
+      </div>
+    </div>
 
     <div class="box-title-run">
       <h1 class="title-box title-privacy fadein aos-init aos-animate" data-aos="show">仮登録用フォーム</h1>
@@ -26,12 +31,12 @@
             <tr>
               <th>
                 <label for="name" class="ttl-group">
-                  <span class="required">必須</span>名前
+                  <span class="required">必須</span>お名前
                 </label>
               </th>
               <td>
                 <div class="form-group">
-                  <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" required placeholder="※お名前を漢字でご入力">
+                  <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" required placeholder="（例）売掛太郎">
                   @error('name')
                   <span class="help-block show" role="alert">
                     <strong>{{ $message }}</strong>
@@ -40,79 +45,6 @@
                 </div>
               </td>
             </tr>
-            <tr>
-              <th>
-                <label for="furigana" class="ttl-group">
-                  <span class="required">必須</span>フリガナ
-                </label>
-              </th>
-              <td>
-                <div class="form-group">
-                  <input type="text" name="furigana" id="furigana" value="{{ old('furigana') }}" class="form-control  @error('furigana') is-invalid @enderror" required placeholder="※お名前のフリガナをご入力">
-                  @error('furigana')
-                  <span class="help-block show" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <label for="year" class="ttl-group">
-                  <span class="required">必須</span>生年月日
-                </label>
-              </th>
-              <td>
-                <div class="form-group">
-                  <div class="group-birthday">
-                    <input type="tel" id="year" name="year" value="{{ old('year') }}" class="form-control  @error('year') is-invalid @enderror" placeholder="例：1987">
-                    年
-                    <input type="tel" id="month" name="month" value="{{ old('month') }}" class="form-control  @error('month') is-invalid @enderror" placeholder="06">
-                    月
-                    <input type="tel" id="day" name="day" value="{{ old('day') }}" class="form-control  @error('day') is-invalid @enderror" placeholder="05">
-                    日
-                  </div>
-                  @if($errors->get('year') || $errors->get('month')|| $errors->get('day'))
-                  <span class="help-block show" role="alert">
-                    <strong>※生年月日を入力してください</strong>
-                  </span>
-                  @endif
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <label for="gender_1" class="ttl-group">
-                  <span class="required">必須</span>性別
-                </label>
-              </th>
-              <td>
-                <div class="form-group">
-                  <div class="group-radio">
-                    <label>
-                      <input type="radio" id="gender_1" name="gender" value="男性" required {{ old('gender')=="男性"?"checked":"" }}>
-                      男性
-                    </label>
-                    <label>
-                      <input type="radio" id="gender_2" name="gender" value="女性" required {{ old('gender')=="女性"?"checked":"" }}>
-                      女性
-                    </label>
-                  </div>
-                  @error('gender')
-                  <span class="help-block show" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="form-title fadein" data-aos="show">＜ログイン用のメールアドレスとパスワード＞</div>
-        <table class="table table-apply fadein" data-aos="show">
-          <tbody>
             <tr>
               <th>
                 <label for="email" class="ttl-group">
@@ -139,7 +71,6 @@
               <td>
                 <div class="form-group">
                   <input type="email" name="email_confirmation" id="email_confirmation" value="{{ old('email_confirmation') }}" class="form-control" required placeholder="※上記と同じメールアドレスを再度ご入力">
-
                 </div>
               </td>
             </tr>
@@ -203,7 +134,7 @@
       </div>
     </form>
   </div>
-</section>
+</main>
 @endsection
 
 

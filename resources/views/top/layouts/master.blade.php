@@ -155,6 +155,12 @@
     </footer>
     <button id="back-to-top"><img src="{{ asset('templates/frontend/images/icon-circle-arrow-top.png') }}" width="48" height="48" alt="TOPに戻る"></button>
     
+    <link
+    href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet">
+    <script src="{{ asset('templates/frontend/libs/jquery-3.6.1.min.js') }}"></script>
+    <script src="{{ asset('templates/frontend/libs/aos/aos.js') }}"></script>
+    <script src="{{ asset('templates/frontend/js/script.js') }}"></script>
     <script>
         window.onload = function() {
             if ($('#loading').length) {
@@ -163,6 +169,8 @@
             }
         }
     </script>
+    @stack('footer')
+
 </body>
     
 </html>

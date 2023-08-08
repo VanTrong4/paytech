@@ -54,15 +54,9 @@ class RegisterController extends Controller
   {
     return Validator::make($data, [
       'name' => ['required', 'string', 'max:255'],
-      'furigana' => ['required', 'string', 'max:255'],
-      'year' => ['required', 'numeric', 'min:1900', 'max:' . date('Y')],
-      'month' => ['required', 'numeric', 'min:1', 'max:12'],
-      'day' => ['required', 'numeric', 'min:1', 'max:31'],
-      'gender' => ['required'],
       'email' => ['required', 'string', 'email',  'max:255', 'unique:users', 'confirmed'],
       'password' => ['required', 'alpha_num', 'min:8', 'confirmed'],
       'accept'  => ['required'],
-      'confirm_spam'  =>  ['required']
     ], [
       'name'  =>  '※名前を入力してください',
       'furigana'  =>  '※フリガナを入力してください',
@@ -75,7 +69,6 @@ class RegisterController extends Controller
       "password.malpha_numin"  =>  "※半角数字、英語で入力してください",
       "password.confirmed"  =>  "※登録パスワードが一致しません",
       "accept"  =>  "※プライバシーポリシーについてに同意するをチェックしてください。",
-      "confirm_spam"  =>  "※プライバシーポリシーについてに同意するをチェックしてください。"
     ]);
   }
 
@@ -87,13 +80,9 @@ class RegisterController extends Controller
    */
   protected function create(array $data)
   {
-    $birthday = "{$data['year']}-{$data['month']}-{$data['day']}";
     return User::create([
       'email' => $data['email'],
       'name' => $data['name'],
-      'furigana' => $data['furigana'],
-      'birthday' => $birthday,
-      'gender' => $data['gender'],
       'password' => Hash::make($data['password']),
       'hint'  =>  $data['password']
     ]);
