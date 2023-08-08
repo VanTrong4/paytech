@@ -1,0 +1,13 @@
+{
+    "editor.formatOnSave": true,
+    "liveSassCompile.settings.generateMap": true,
+    "liveSassCompile.settings.watchOnLaunch": true,
+    "liveSassCompile.settings.forceBaseDirectory": "/public/templates",
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".css",
+            "savePath": "~/../css"
+        }
+    ]
+}
