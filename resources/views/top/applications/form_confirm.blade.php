@@ -1,191 +1,174 @@
-<table class="table table-apply">
-  <tbody>
-    <tr>
-      <th>>ご希望の連絡方法</th>
-      <td id="confirm_preferred_contact"></td>
-    </tr>
-    <tr>
-      <th>LINE ID</th>
-      <td id="confirm_line_id"></td>
-    </tr>
-  </tbody>
-</table>
 
-<div class="form-title">＜お住まいの情報＞</div>
+<div class="confirm-note">
+  以下の内容でよろしければ<br class="only-sp">「送信する」を押してください。
+</div>
 
-<table class="table table-apply">
-  <tbody>
-    <tr>
-      <th>郵便番号</th>
-      <td>〒<span id="confirm_zipcode1"></span>-<span id="confirm_zipcode2"></span></td>
-    </tr>
-    <tr>
-      <th>都道府県</th>
-      <td id="confirm_prefect"></td>
-    </tr>
-    <tr>
-      <th><span class="required">必須</span>市区町村</th>
-      <td id="confirm_district"></td>
-    </tr>
-    <tr>
-      <th><span class="required">必須</span>番地</th>
-      <td id="confirm_address"></td>
-    </tr>
-    <tr>
-      <th><span>任意</span>マンション名・部屋番号</th>
-      <td id="confirm_apartment_room"></td>
-    </tr>
-    <tr>
-      <th><span class="required">必須</span>連絡先(電話番号)</th>
-      <td id="confirm_phone_number"></td>
-    </tr>
-  </tbody>
-</table>
-<div class="form-title">＜勤務先の情報＞</div>
-<table class="table table-apply">
-  <tbody>
-    <tr>
-      <th><span>任意</span>郵便番号</th>
-      <td id="confirm_company_zipcode"></td>
-    </tr>
-    <tr>
-      <th><span>任意</span>都道府県</th>
-      <td id="confirm_company_prefect"></td>
-    </tr>
-    <tr>
-      <th><span>任意</span>市区町村</th>
-      <td id="confirm_company_district"></td>
-    </tr>
-    <tr>
-      <th><span>任意</span>番地</th>
-      <td id="confirm_company_address"></td>
-    </tr>
-    <tr>
-      <th><span>任意</span>マンション名・部屋番号</th>
-      <td id="confirm_company_apartment_room"></td>
-    </tr>
-    <tr>
-      <th><span>任意</span>電話番号</th>
-      <td id="confirm_company_phonenumber"></td>
-    </tr>
-  </tbody>
-</table>
+@if (isset($data))
 
-<div class="form-title">＜口座番号＞</div>
-<table class="table table-apply">
+  <h2 class="form-title">■買取価格のシミュレート</h2>
+  <table class="table table-apply table-apply-step">
+    <tbody>
+      <tr>
+        <th>売掛先企業</th>
+        <td>{{ $data->company_name }}</td>
+      </tr>
+      <tr>
+        <th>売掛先企業の本社所在地</th>
+        <td>{{ $data->prefect_txt }}{{ $data->city_txt }}
+        </td>
+      </tr>
+      <tr>
+        <th>売掛先の企業規模</th>
+        <td>{{ $data->company_size }}</td>
+      </tr>
+      <tr>
+        <th>売掛先の資本金</th>
+        <td>{{ $data->receivable_capital }}
+        </td>
+      </tr>
+      <tr>
+        <th>売掛先の業歴</th>
+        <td>{{ $data->business_history }}
+        </td>
+      </tr>
+      <tr>
+        <th>売掛先とのお取引回数</th>
+        <td>{{ $data->number_of_transactions }}
+        </td>
+      </tr>
+      <tr>
+        <th>売掛先との契約書の有無</th>
+        <td>{{ $data->has_contract }}</td>
+      </tr>
+      <tr>
+        <th>PAYTECH-ペイテック-のご利用回数</th>
+        <td>{{ $data->quick_was_used }}</td>
+      </tr>
+      <tr>
+        <th>売掛先へのご請求金額</th>
+        <td>{{ $data->billing }}万円</td>
+      </tr>
+      <tr>
+        <th>概算手数料</th>
+        <td>{{ $data->percent }}%〜</td>
+      </tr>
+      <tr>
+        <th>資金調達成功率</th>
+        <td>{{ $data->fundraising_percent }}%〜
+        </td>
+      </tr>
+      <tr>
+        <th>資金調達可能額</th>
+        <td>{{ $data->fundraising_price }}万円～
+        </td>
+      </tr>
+    </tbody>
+  </table>
+@endif
+
+<h2 class="form-title">■お客様の情報をご入力</h2>
+<table class="table table-apply fadein" data-aos="show">
   <tbody>
     <tr>
-      <th><span class="required">必須</span>銀行名</th>
-      <td id="confirm_bank_name"></td>
-    </tr>
-    <tr>
-      <th><span class="required">必須</span>支店名</th>
-      <td id="confirm_branch_name"></td>
-    </tr>
-    <tr>
-      <th><span class="required">必須</span>支店番号</th>
-      <td id="confirm_branch_number"></td>
-    </tr>
-    <tr>
-      <th><span class="required">必須</span>口座の種類</th>
-      <td id="confirm_account_type"></td>
-    </tr>
-    <tr>
-      <th><span class="required">必須</span>口座番号</th>
-      <td id="confirm_account_number"></td>
-    </tr>
-    <tr>
-      <th><span class="required">必須</span>口座名義(カナ)</th>
-      <td id="confirm_account_name_kana"></td>
-    </tr>
-  </tbody>
-</table>
-<div class="form-title">＜個人情報の写真添付＞</div>
-<table class="table table-apply">
-  <tbody>
-    <tr>
-      <th><span>任意</span>必要書類の添付</th>
+      <th>お名前</th>
       <td>
-        <ul class="form-group-file">
-          <li class="file-wrap">
-            <div class="label">買取希望商品</div>
-            <div class="file-group">
-              <div class="file-item">
-                <span></span>
-                <div class="form-group  file-control">
-                  <div class="preview" id="confirm_photo_wish_item"></div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="file-wrap">
-            <div class="label">セルフィー（自画撮り）</div>
-            <div class="file-group">
-              <div class="file-item">
-                <span></span>
-                <div class="form-group  file-control">
-                  <div class="preview" id="confirm_photo_selfie"></div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="file-wrap">
-            <div class="label">運転免許証、または<br class="only-pc">顔写真付きの身分証明書</div>
-            <div class="file-group">
-              <div class="file-item">
-                <span>※表面</span>
-                <div class="form-group  file-control">
-                  <div class="preview" id="confirm_photo_1"></div>
-                </div>
-              </div>
-              <div class="file-item">
-                <span>※裏面</span>
-                <div class="form-group  file-control">
-                  <div class="preview" id="confirm_photo_2"></div>
-                </div>
-              </div>
-              <div class="file-item">
-                <span></span>
-                <div class="form-group  file-control">
-                  <div class="preview" id="confirm_photo_3"></div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="file-wrap">
-            <div class="label">保険証</div>
-            <div class="file-group">
-              <div class="file-item">
-                <span></span>
-                <div class="form-group  file-control">
-                  <div class="preview" id="confirm_photo_insurance_card"></div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="file-wrap">
-            <div class="label">その他の画像</div>
-            <div class="file-group">
-              <div class="file-item">
-                <span></span>
-                <div class="form-group  file-control">
-                  <div class="preview" id="confirm_photo_other"></div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="file-wrap">
-            <div class="label">その他</div>
-            <div class="file-group">
-              <div class="file-item">
-                <span></span>
-                <div class="form-group  file-control">
-                  <div id="confirm_other" style="white-space: break-spaces;"></div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <span id="address_confirm"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td>
+        <span id="phonenumber_confirm"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td>
+        <span id="email_confirm"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>ご住所</th>
+      <td>
+        <span id="company_confirm"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>会社名・屋号名</th>
+      <td>
+        <span id="fullname_confirm"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>買取希望金額</th>
+      <td>
+        <span id="amount_confirm"></span>万円
+      </td>
+    </tr>
+    <tr>
+      <th>ご希望のファクタリング形式</th>
+      <td>
+        <span id="format_confirm"></span>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+<h2 class="form-title">■売掛先の企業様の情報をご入力</h2>
+<table class="table table-apply fadein" data-aos="show">
+  <tbody>
+    <tr>
+      <th>売掛先の企業名</th>
+      <td>
+        <span id="company_office_confirm"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>売掛先の所在地</th>
+      <td>
+        <span id="company_address_confirm"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>その他情報</th>
+      <td>
+        <span id="company_other_confirm"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td>
+        <span id="company_phone_my_confirm"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 class="form-title">■必要書対の画像を添付</h2>
+<table class="table table-apply fadein" data-aos="show">
+  <tbody>
+    <tr>
+      <th>身分証明書（前面・裏面）</th>
+      <td>
+        <span id="photo_id_1_confirm"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>身分証明書（裏面）</th>
+      <td>
+        <span id="photo_id_2_confirm"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>売掛先の<br>
+        請求書・注文書データ</th>
+      <td>
+        <span id="photo_bill_confirm"></span>
+      </td>
+    </tr>
+    <tr>
+      <th>成因証書データ</th>
+      <td>
+        <span id="photo_item_confirm"></span>
       </td>
     </tr>
   </tbody>

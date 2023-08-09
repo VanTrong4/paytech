@@ -49,8 +49,7 @@ class ApplicationController extends Controller
       })
       ->orWhereHas('user', function ($query) use ($keyword) {
         return $query->where('email', 'LIKE', '%' . $keyword . '%')
-          ->orWhere('name', 'LIKE', '%' . $keyword . '%')
-          ->orWhere('furigana', 'LIKE', '%' . $keyword . '%');
+          ->orWhere('name', 'LIKE', '%' . $keyword . '%');
       })->paginate(100);
     return view('applications.index', compact('applications'));
   }

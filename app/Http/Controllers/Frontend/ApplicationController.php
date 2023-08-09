@@ -36,43 +36,27 @@ class ApplicationController extends Controller
   public function register(Request $request)
   {
     $data = $request->only([
-      'preferred_contact',
-      'line_id',
-      'zipcode1',
-      'zipcode2',
-      'prefect',
-      'district',
       'address',
-      'apartment_room',
-      'phone_number',
-      'company_zipcode1',
-      'company_zipcode2',
-      'company_prefect',
-      'company_district',
+      'phonenumber',
+      'email',
+      'company',
+      'fullname',
+      'amount',
+      'format',
+      'company_office',
       'company_address',
-      'company_apartment_room',
-      'company_phonenumber',
-      'bank_name',
-      'branch_name',
-      'branch_number',
-      'account_type',
-      'account_number',
-      'account_name_kana',
-      'other'
+      'company_other',
+      'company_phone_my',
     ]);
     $photo_fields = [
-      'photo_wish_item',
-      'photo_selfie',
-      'photo_1',
-      'photo_2',
-      'photo_3',
-      'photo_insurance_card',
-      'photo_other'
+      'photo_id_1',
+      'photo_id_2',
+      'photo_bill',
+      'photo_item',
     ];
 
     $user_id = $request->user()->getKey();
     $data['user_id']  = $user_id;
-
     $application = Application::create($data);
     $attachments = [];
     foreach ($photo_fields as $photo_file) :
@@ -85,8 +69,8 @@ class ApplicationController extends Controller
     endforeach;
 
     $application->load('user');
-    Mail::to($application->user->email)->send(new CreatedApplicationMail($application));
-    Mail::to(config('admin.email'))->send(new CreatedApplicationToAdminMail($application));
+    // Mail::to($application->user->email)->send(new CreatedApplicationMail($application));
+    // Mail::to(config('admin.email'))->send(new CreatedApplicationToAdminMail($application));
     return redirect(route(lp() . 'applications.thanks'));
   }
 
@@ -100,6 +84,12 @@ class ApplicationController extends Controller
     if ($application->user_id != Auth::user()->id)
       abort(404);
     return view('applications.detail', compact('application'));
+  }
+
+  public function gotoForm(Request $request)
+  {
+    $data = $request;
+    return view('applications.form', compact('data'));
   }
 
   public function contract(Application $application)
@@ -122,7 +112,7 @@ class ApplicationController extends Controller
     $data['status'] = 'waiting_for_payment';
     $application->update($data);
 
-    return redirect(route(lp() . 'mypage'))->with('success', __("contract has been created"));;
+    return redirect(route(lp() . 'mypage'))->with('success', __("contract has been created"));
   }
   public function pdf_print(Application $application)
   {

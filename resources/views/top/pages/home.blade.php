@@ -56,7 +56,8 @@
                             確認することができます
                         </div>
                         <div>
-                            <form method="POST" action="./contact/" id="form_step">
+                            <form method="POST" action="{{ route(lp().'toapplications.form') }}" id="form_step">
+                                @csrf
                                 <input type="hidden" name="prefect_txt" id="prefect_txt">
                                 <input type="hidden" name="city_txt" id="city_txt">
                                 <div class="tab">

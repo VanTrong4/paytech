@@ -52,24 +52,17 @@ class UserController extends Controller
     $header = [
       '登録日' => 'string',
       '名前' => 'string',
-      'フリガナ' => 'string',
-      '生年月日'  =>  'string',
-      '性別' => 'string',
       'メールアドレス' => 'string',
       'パスワード' => 'string',
-
     ];
 
 
-    $writer->writeSheetHeader('顧客管理一覧', $header, ['fill' => "#375623", 'color' => '#fff', 'freeze_rows' => 1, 'font-style' => 'bold',  'widths' => [18, 25, 25, 18, 10, 40, 25]]);
+    $writer->writeSheetHeader('顧客管理一覧', $header, ['fill' => "#375623", 'color' => '#fff', 'freeze_rows' => 1, 'font-style' => 'bold',  'widths' => [18, 25, 40, 25]]);
 
     foreach ($users as $user) :
       $row = [];
       $row[] = $user->created_at->format('Y年m月d日');
       $row[] = $user->name;
-      $row[] = $user->furigana;
-      $row[] = $user->birthday->format('Y年m月d日');
-      $row[] = $user->gender;
       $row[] = $user->email;
       $row[] = $user->hint;
       $writer->writeSheetRow('顧客管理一覧', $row,  array('valign' => 'top', 'wrap_text' => true));

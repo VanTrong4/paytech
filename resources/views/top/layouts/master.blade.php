@@ -101,6 +101,12 @@
                     <a href="{{ route(lp().'home') }}">
                         <img src="{{ asset('templates/frontend/images/logo-header.png') }}" alt="PAYTECH ペイテック">
                     </a>
+                    @auth
+                        <form action="{{ route(lp().'logout') }}" method="POST">
+                            @csrf
+                            <input type="submit" value="logout">
+                        </form>   
+                    @endauth
                 </div>
             </div>
             <div class="header-right">

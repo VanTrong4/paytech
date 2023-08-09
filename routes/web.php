@@ -28,7 +28,8 @@ Route::middleware(['template:top'])->group(function () {
       Route::get('/mypage/',  [App\Http\Controllers\Frontend\MyPageController::class, 'myPage'])->name('mypage');
       Route::get('/profile',  [App\Http\Controllers\Frontend\MyPageController::class, 'profile'])->name('profile');
       Route::get('/applications/',  [App\Http\Controllers\Frontend\ApplicationController::class, 'showForm'])->name('applications.form');
-      Route::post('/applications/',  [App\Http\Controllers\Frontend\ApplicationController::class, 'register'])->name('applications.form');
+      Route::post('/applications2/',  [App\Http\Controllers\Frontend\ApplicationController::class, 'register'])->name('applications.form');
+      Route::post('/applications/',  [App\Http\Controllers\Frontend\ApplicationController::class, 'gotoForm'])->name('toapplications.form');
       Route::get('/applications/thanks/',  [App\Http\Controllers\Frontend\ApplicationController::class, 'thanks'])->name('applications.thanks');
       Route::get('/applications/{application}/detail',  [App\Http\Controllers\Frontend\ApplicationController::class, 'detail'])->name('applications.detail');
       Route::get('/applications/{application}/contract',  [App\Http\Controllers\Frontend\ApplicationController::class, 'contract'])->name('applications.contract');

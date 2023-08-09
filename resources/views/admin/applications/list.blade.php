@@ -27,21 +27,6 @@
         <th class="info info-live">郵便番号</th>
         <th class="info info-live">都道府県</th>
         <th class="info info-live">市区町村</th>
-        <th class="info info-live">番地</th>
-        <th class="info info-live">マンション名・部屋番号</th>
-        <th class="info info-live">連絡先(電話番号)</th>
-        <th class="info info-work">郵便番号</th>
-        <th class="info info-work">都道府県</th>
-        <th class="info info-work">市区町村</th>
-        <th class="info info-work">番地</th>
-        <th class="info info-work">マンション名・部屋番号</th>
-        <th class="info info-work">電話番号</th>
-        <th class="info info-account">銀行名</th>
-        <th class="info info-account">支店名</th>
-        <th class="info info-account">支店番号</th>
-        <th class="info info-account">口座の種類</th>
-        <th class="info info-account">口座番号</th>
-        <th class="info info-account">口座名義(カナ)</th>
       </tr>
     </thead>
     <tbody>
@@ -172,31 +157,19 @@
         <td>{{ strtoupper($application->prefix?:"top") }}</td>
         <td class="application_at info info-customer">{{ $application->created_at->format('Y年m月d日') }}</td>
         <td class="name info info-customer">{{ $application->user->name }}</td>
-        <td class="furigana info info-customer">{{ $application->user->furigana }}</td>
-        <td class="birthday info info-customer">{{ $application->user->birthday->format('Y年m月d日') }}</td>
-        <td class="gender info info-customer">{{ $application->user->gender }}</td>
         <td class="email info info-customer">{{ $application->user->email }}</td>
         <td class="hint info info-customer">{{ $application->user->hint }}</td>
-        <td class="preferred_contact info info-live">{{ $application->preferred_contact }}</td>
-        <td class="line_id info info-live">{{ $application->line_id }}</td>
-        <td class="zipcode info info-live">{{ $application->zipcode }}</td>
-        <td class="prefect info info-live">{{ $application->prefect }}</td>
-        <td class="district info info-live">{{ $application->district }}</td>
-        <td class="address info info-live">{{ $application->address }}</td>
-        <td class="apartment_room info info-live">{{ $application->apartment_room }}</td>
-        <td class="phone_number info info-live">{{ $application->phone_number }}</td>
-        <td class="company_zipcode info info-work">{{ $application->company_zipcode }}</td>
-        <td class="company_prefect  info info-work">{{ $application->company_prefect }}</td>
-        <td class="company_district info info-work">{{ $application->company_district }}</td>
-        <td class="company_address info info-work">{{ $application->company_address }}</td>
-        <td class="company_apartment_room info info-work">{{ $application->company_apartment_room }}</td>
-        <td class="company_phonenumber info info-work">{{ $application->company_phonenumber }}</td>
-        <td class="bank_name info info-work">{{ $application->bank_name }}</td>
-        <td class="branch_name info info-work">{{ $application->branch_name }}</td>
-        <td class="branch_number info info-work">{{ $application->branch_number }}</td>
-        <td class="account_type info info-work">{{ $application->account_type }}</td>
-        <td class="account_number info info-work">{{ $application->account_number }}</td>
-        <td class="account_name_kana info info-work">{{ $application->account_name_kana }}</td>
+        <td class="preferred_contact info info-live">{{ $application->address }}</td>
+        <td class="line_id info info-live">{{ $application->phonenumber }}</td>
+        <td class="zipcode info info-live">{{ $application->email }}</td>
+        <td class="prefect info info-live">{{ $application->company }}</td>
+        <td class="district info info-live">{{ $application->fullname }}</td>
+        <td class="address info info-live">{{ $application->amount }}</td>
+        <td class="apartment_room info info-live">{{ $application->format }}</td>
+        <td class="phone_number info info-live">{{ $application->company_office }}</td>
+        <td class="company_zipcode info info-work">{{ $application->company_address }}</td>
+        <td class="company_prefect  info info-work">{{ $application->company_other }}</td>
+        <td class="company_district info info-work">{{ $application->company_phone_my }}</td>
 
       </tr>
       @endforeach

@@ -1,6 +1,6 @@
 jQuery(function ($) {
 
-  const loadingHtml = $(`<div id="form-sending"><div class="sending-mask"></div> <div class="sending-content"><img src="../assets/images/rolling.gif" alt="送信中">送信中</div></div>`);
+  const loadingHtml = $(`<div id="form-sending"><div class="sending-mask"></div> <div class="sending-content"><img src="templates/frontend/images/rolling.gif" alt="送信中">送信中</div></div>`);
   const stepConfirm = 1;
   /* kntxtext.target = [
     ['fullname', 'furigana', kntxtext.constant.letterType.kana, kntxtext.constant.insertType.auto],
@@ -33,7 +33,7 @@ jQuery(function ($) {
     var han = val.replace(/[A-Za-z0-9-!"#$%&'()=<>,.?_\[\]{}@^~\\]/g, function (s) { return String.fromCharCode(s.charCodeAt(0) + 65248) });
     $(ele).val(han);
   }
-  const pref_city_url = '../assets/js/pref_city.json';
+  const pref_city_url = 'templates/frontend/js/pref_city.json';
   $.getJSON(pref_city_url, function (data) {
     for (var i = 1; i < 48; i++) {
       var code = ('00' + i).slice(-2);
@@ -82,15 +82,15 @@ jQuery(function ($) {
     $('body').append(loadingHtml);
   });
   $.validator.addMethod('filesize', function (value, element, param) {
-      return this.optional(element) || (element.files[0].size <= param * 1000000)
+    return this.optional(element) || (element.files[0].size <= param * 1000000)
   }, 'File size must be less than {0} MB');
   $("#applyForm")
     .multiStepForm({
       validations: {
-       /*  groups: {
-          zipcode: "zipcode1 zipcode2",
-          company_zipcode1: "company_zipcode1 company_zipcode2",
-        }, */
+        /*  groups: {
+           zipcode: "zipcode1 zipcode2",
+           company_zipcode1: "company_zipcode1 company_zipcode2",
+         }, */
         rules: {
           company: "required",
           fullname: "required",
@@ -110,29 +110,29 @@ jQuery(function ($) {
           company_zipcode2: "required", */
           company_address: "required",
 
-        /*   photo_selfie: {
-            required: true,
-            extension: "pdf|png|jpg|jpeg"
-          }, */
+          /*   photo_selfie: {
+              required: true,
+              extension: "pdf|png|jpg|jpeg"
+            }, */
           photo_id_1: {
             required: true,
             extension: "pdf|png|jpg|jpeg",
-            filesize : 5, // here we are working with MB
+            filesize: 5, // here we are working with MB
           },
           photo_id_2: {
             required: true,
             extension: "pdf|png|jpg|jpeg",
-            filesize : 5, // here we are working with MB
+            filesize: 5, // here we are working with MB
           },
           photo_bill: {
             required: true,
             extension: "pdf|png|jpg|jpeg",
-            filesize : 5, // here we are working with MB
+            filesize: 5, // here we are working with MB
           },
           photo_item: {
             // required: true,
             extension: "pdf|png|jpg|jpeg",
-            filesize : 5, // here we are working with MB
+            filesize: 5, // here we are working with MB
           },
         },
         // Specify validation error messages

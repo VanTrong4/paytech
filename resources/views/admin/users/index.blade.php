@@ -47,9 +47,6 @@
                 <th class="text-center info info-customer info-lp">登録元サイト</th>
                 <th class="text-center info info-customer">登録日</th>
                 <th class="text-center info info-customer">名前</th>
-                <th class="text-center info info-customer">フリガナ</th>
-                <th class="text-center info info-customer">生年月日</th>
-                <th class="text-center info info-customer">性別</th>
                 <th class="text-center info info-customer">メールアドレス</th>
                 <th class="text-center info info-customer">パスワード</th>
               </tr>
@@ -70,9 +67,6 @@
                 <td class="created_at">{{ strtoupper($user->prefix?:"top") }}</td>
                 <td class="created_at">{{ $user->created_at->format('Y年m月d日') }}</td>
                 <td class="name">{{ $user->name }}</td>
-                <td class="furigana">{{ $user->furigana }}</td>
-                <td class="birthday">{{ $user->birthday->format('Y年m月d日') }}</td>
-                <td class="gender">{{ $user->gender }}</td>
                 <td class="email">{{ $user->email }}</td>
                 <td class="hint">{{ $user->hint }}</td>
 
